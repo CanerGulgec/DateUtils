@@ -1,11 +1,15 @@
 # DateUtils
 
-allprojects {
+	allprojects {
 		repositories {
+			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-  
-  dependencies {
+	
+	
+
+	dependencies {
 	        implementation 'com.github.CanerGulgec:DateUtils:0.1.0'
 	}
+
