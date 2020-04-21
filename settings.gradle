@@ -1,0 +1,3 @@
+rootProject.name='DateUtils'
+include ':app'
+include ':extension'
