@@ -1,21 +1,27 @@
 package com.caner.extension
 
-import android.content.Context
-import android.widget.Toast
+import android.text.format.DateUtils.HOUR_IN_MILLIS
+import android.text.format.DateUtils.MINUTE_IN_MILLIS
+import java.text.SimpleDateFormat
+import java.util.*
 
 
-fun toast(c: Context?, message: String?) {
-    Toast.makeText(c, message, Toast.LENGTH_SHORT).show()
-}
+const val SECOND_IN_MILLIS: Long = 1000
+const val MINUTE_IN_MILLIS = SECOND_IN_MILLIS * 60
+const val HOUR_IN_MILLIS = MINUTE_IN_MILLIS * 60
+const val DAY_IN_MILLIS = HOUR_IN_MILLIS * 24
+
+val YMDHMS = "yyyy-MM-dd HH:mm:ss"
+val YMDHM = "yyyy-MM-dd HH:mm"
+val YMD = "yyyy-MM-dd"
+
+
+private lateinit var DATE_FORMAT: SimpleDateFormat
 
 /**
- * Returns a string describing the elapsed time since startTime.
- * @param startTime some time in the past.
- * @return a String object containing the elapsed time.
- * @see .getRelativeTimeSpanString
+ * This method returns formatted time to display in selected format
  */
-fun getRelativeTimeSpanString(startTime: Long): CharSequence? {
-    return getRelativeTimeSpanString(
-        startTime
-    )
+fun fromMillisToTimeString(millis: Long, pattern: String = YMDHM): String {
+    DATE_FORMAT = SimpleDateFormat(pattern, Locale.getDefault())
+    return DATE_FORMAT.format(millis)
 }
