@@ -1,11 +1,9 @@
 package com.caner.extension
 
 import android.text.format.DateUtils
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-
-
-//TODO RETURN WITH UTC
 
 /**
  * This method returns current date in specified pattern
@@ -30,6 +28,18 @@ fun getDateStringWithSpecificMessage(timeInMillis: Long, pattern: String = DATE_
         isYesterday(timeInMillis) -> "Yesterday"
         else -> dateFormat.format(timeInMillis)
     }
+}
+
+fun getDateFromUtcWindowsFormat(pDate: String, pattern: String = DATE_FORMAT_3): Date? {
+    val dateFormat = SimpleDateFormat(pattern, Locale.getDefault())
+    dateFormat.timeZone = SimpleTimeZone(SimpleTimeZone.UTC_TIME, "UTC")
+    return dateFormat.parse(pDate)
+}
+
+fun getDateStringFromUtcWindowsFormat(pDate: String, pattern: String = DATE_FORMAT_3): String {
+    val dateFormat = SimpleDateFormat(pattern, Locale.getDefault())
+    dateFormat.timeZone = SimpleTimeZone(SimpleTimeZone.UTC_TIME, "UTC")
+    return dateFormat.format(pDate)
 }
 
 fun getMilliSecondsFromDateString(dateString: String, pattern: String): Long? {
