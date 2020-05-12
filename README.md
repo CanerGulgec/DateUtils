@@ -10,6 +10,6 @@
 	
 
 	dependencies {
-	        implementation 'com.github.CanerGulgec:DateUtils:0.1.2'
+	        implementation 'com.github.CanerGulgec:DateUtils:0.1.3'
 	}
 
